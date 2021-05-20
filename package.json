@@ -1,0 +1,20 @@
+{
+  "name": "reactchat",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "concurrently": "^6.1.0",
+    "express": "^4.17.1",
+    "nanoid": "^3.1.23"
+  },
+  "scripts": {
+    "server": "yarn --cwd server dev",
+    "client": "yarn --cwd client build",
+    "start": "yarn --cwd server start",
+    "runcs": "concurrently \"yarn server\" \"yarn client\"",
+    "heroku-prebuild": "yarn --cwd server install --pure-lockfile && yarn --cwd client install --pure-lockfile",
+    "heroku-postbuild": "yarn --cwd client build"
+  }
+}
